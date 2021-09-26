@@ -27,22 +27,26 @@ def send_response(req, client_socket):
         client_socket.send((f"HTTP/1.1 404 Not found\n\n").encode())
         client_socket.send("<h1>404</h1><p>Not found</p>".encode())
 
-#establish TCP connect
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(('localhost', 80))
-server_socket.listen()
+def main():
+    #establish TCP connect
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('localhost', 80))
+    server_socket.listen()
 
-while True:
-    print(70*'-')
-    client_socket, addr = server_socket.accept()
-    request = client_socket.recv(1024)
-    request = request.decode('utf-8')
-    print(request)
-    print("Address: ", addr)
-    print()
-    req = parse_request(request) #file
-    print("User`s requests: ", req)
+    while True:
+        print(70*'-')
+        client_socket, addr = server_socket.accept()
+        request = client_socket.recv(1024)
+        request = request.decode('utf-8')
+        print(request)
+        print("Address: ", addr)
+        print()
+        req = parse_request(request) #file
+        print("User`s requests: ", req)
 
-    send_response(req, client_socket)
+        send_response(req, client_socket)
 
-    client_socket.close()
+        client_socket.close()
+
+if __name__ == "__main__":
+    main()
