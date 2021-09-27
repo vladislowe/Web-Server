@@ -1,5 +1,5 @@
 import unittest
-import webserver
+from webserver import webserver
 
 class webserver_tests(unittest.TestCase):
 
