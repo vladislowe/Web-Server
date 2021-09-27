@@ -1,7 +1,7 @@
 import unittest
-import sys
+#import sys
 
-sys.path.insert(0, '../webserver/')
+#sys.path.insert(0, '../webserver/')
 
 import webserver
 
