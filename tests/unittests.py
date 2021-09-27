@@ -1,5 +1,9 @@
 import unittest
-from webserver import webserver
+import sys
+
+sys.path.insert(0, '../webserver/')
+
+import webserver
 
 class webserver_tests(unittest.TestCase):
 
