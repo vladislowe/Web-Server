@@ -1,2 +1,1 @@
 [production_servers]
-linux1    ansible_host=
