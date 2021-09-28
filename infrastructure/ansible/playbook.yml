@@ -1,0 +1,12 @@
+---
+- name: Configuring target server
+  hosts: ubuntu1
+  become: yes
+
+  tasks:
+
+  - name: Wait 600 seconds for target server to become reachable
+    wait_for_connection:
+
+  - name: Testing connection
+    ping:
