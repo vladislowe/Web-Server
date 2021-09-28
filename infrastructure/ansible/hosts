@@ -1,3 +1,2 @@
 [production_servers]
 linux1    ansible_host=3.69.148.105
-
