@@ -12,3 +12,7 @@ resource "aws_instance" "Target_server" {
     Name = "Target_server"
   }
 }
+
+output "instance_ip_addr" {
+  value = aws_instance.Target_server.public_ip
+}
