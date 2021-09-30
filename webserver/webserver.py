@@ -30,7 +30,7 @@ def send_response(req, client_socket):
 def main():
     #establish TCP connect
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('localhost', 80))
+    server_socket.bind(('', 80))
     server_socket.listen()
 
     while True:
