@@ -16,4 +16,6 @@
     copy: src={{ source_dir }} dest={{ destin_dir }} mode=0755
     
   - name: Run web server
-    shell: "echo text > somefile.txt"
+    command: python3 webserver.py
+    async: 1000
+    poll: 0
