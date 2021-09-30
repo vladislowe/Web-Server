@@ -3,10 +3,18 @@
   hosts: ubuntu1
   become: yes
 
+  vars:
+    source_dir = ./webserver/
+    destin_dir = /home/ubuntu/
+
   tasks:
 
   - name: Wait 600 seconds for target server to become reachable
     wait_for_connection:
 
-  - name: Testing connection
-    ping:
+  - name: Copy source files to target server
+    copy: src={{ source_dir }} dest={{ destin_dir }} mode=0766
+    
+  - name: Run web server
+    chdir: /home/ubuntu/webserver/
+    cmd: python3 webserver.py
