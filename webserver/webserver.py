@@ -9,17 +9,17 @@ def parse_request(request):
 #send response to the user
 def send_response(req, client_socket):
     if req == "/index.html" or req == "/":
-        with open("/home/ubuntu/webserver/index.html", "rb") as file:
+        with open("index.html", "rb") as file:
             readfile = file.read()
             client_socket.send((f"HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Lenght: {len(readfile)}\n\n").encode())
             client_socket.send(readfile)
     elif req == "/github.png":
-        with open("/home/ubuntu/webserver/github.png", "rb") as file:
+        with open("github.png", "rb") as file:
             readfile = file.read()
             client_socket.send((f"HTTP/1.1 200 OK\nContent-Type: image/png\nContent-Lenght: {len(readfile)}\n\n").encode())
             client_socket.send(readfile)
     elif req == "/background2.jpg":
-        with open("/home/ubuntu/webserver/background2.jpg", "rb") as file:
+        with open("background2.jpg", "rb") as file:
             readfile = file.read()
             client_socket.send((f"HTTP/1.1 200 OK\nContent-Type: image/jpg\nContent-Lenght: {len(readfile)}\n\n").encode())
             client_socket.send(readfile)
@@ -34,15 +34,15 @@ def main():
     server_socket.listen()
 
     while True:
-        print(70*'-')
+        #print(70*'-')
         client_socket, addr = server_socket.accept()
         request = client_socket.recv(1024)
         request = request.decode('utf-8')
-        print(request)
-        print("Address: ", addr)
-        print()
+        #print(request)
+        #print("Address: ", addr)
+        #print()
         req = parse_request(request) #file
-        print("User`s requests: ", req)
+        #print("User`s requests: ", req)
 
         send_response(req, client_socket)
 
