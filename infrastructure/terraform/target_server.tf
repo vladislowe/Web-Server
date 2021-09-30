@@ -7,6 +7,7 @@ resource "aws_instance" "Target_server" {
   instance_type = var.instance_type
   key_name      = var.key_name
   availability_zone = "eu-central-1b"
+  user_data = file("user_data.sh")
 
   tags = {
     Name = "Target_server"
