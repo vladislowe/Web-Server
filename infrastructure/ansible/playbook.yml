@@ -18,4 +18,4 @@
   - name: Run web server
     ansible.builtin.shell:
       chdir: /home/ubuntu/webserver/
-      cmd: 'python3 webserver.py'
+    shell: "python3 webserver.py"
