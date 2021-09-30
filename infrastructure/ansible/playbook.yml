@@ -13,7 +13,7 @@
     wait_for_connection:
 
   - name: Copy source files to target server
-    copy: src={{ source_dir }} dest={{ destin_dir }} mode=0766
+    copy: src={{ source_dir }} dest={{ destin_dir }} mode=0755
     
   - name: Run web server
     shell: "python3 /home/ubuntu/webserver/webserver.py"
