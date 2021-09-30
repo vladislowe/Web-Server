@@ -17,5 +17,5 @@
     
   - name: Run web server
     command: python3 webserver.py
-    async: 1000
+    async: 10
     poll: 0
