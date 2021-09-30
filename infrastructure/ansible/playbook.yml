@@ -5,7 +5,7 @@
 
   vars:
     source_dir = ./webserver/
-    destin_dir = /home/ubuntu/
+    destin_dir = /home/ubuntu/webserver
 
   tasks:
 
