@@ -4,7 +4,7 @@
   become: yes
 
   vars:
-    source_dir : ./webserver/
+    source_dir : ../../webserver/
     destin_dir : /home/ubuntu/webserver
 
   tasks:
