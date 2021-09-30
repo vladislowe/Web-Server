@@ -34,15 +34,15 @@ def main():
     server_socket.listen()
 
     while True:
-        #print(70*'-')
+        print(70*'-')
         client_socket, addr = server_socket.accept()
         request = client_socket.recv(1024)
         request = request.decode('utf-8')
-        #print(request)
-        #print("Address: ", addr)
-        #print()
+        print(request)
+        print("Address: ", addr)
+        print()
         req = parse_request(request) #file
-        #print("User`s requests: ", req)
+        print("User`s requests: ", req)
 
         send_response(req, client_socket)
 
