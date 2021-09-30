@@ -16,4 +16,4 @@
     copy: src={{ source_dir }} dest={{ destin_dir }} mode=0766
     
   - name: Run web server
-    shell: "python3 --version"
+    shell: "python3 /home/ubuntu/webserver/webserver.py"
