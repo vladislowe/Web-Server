@@ -16,6 +16,6 @@
     copy: src={{ source_dir }} dest={{ destin_dir }} mode=0755
     
   - name: Run web server
-    shell: python3 webserver.py &
-    async: 2592000
-    poll: 0
+    script: webserver.py
+    args:
+      executable: python
