@@ -16,6 +16,4 @@
     copy: src={{ source_dir }} dest={{ destin_dir }} mode=0766
     
   - name: Run web server
-    ansible.builtin.shell:
-      chdir: /home/ubuntu/webserver/
-    shell: "python3 webserver.py"
+    shell: "python3 ./webserver/webserver.py"
