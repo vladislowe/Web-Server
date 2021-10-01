@@ -9,17 +9,17 @@ def parse_request(request):
 #send response to the user
 def send_response(req, client_socket):
     if req == "/index.html" or req == "/":
-        with open("index.html", "rb") as file:
+        with open("/usr/src/app/index.html", "rb") as file:
             readfile = file.read()
             client_socket.send((f"HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Lenght: {len(readfile)}\n\n").encode())
             client_socket.send(readfile)
     elif req == "/github.png":
-        with open("github.png", "rb") as file:
+        with open("/usr/src/app/github.png", "rb") as file:
             readfile = file.read()
             client_socket.send((f"HTTP/1.1 200 OK\nContent-Type: image/png\nContent-Lenght: {len(readfile)}\n\n").encode())
             client_socket.send(readfile)
     elif req == "/background2.jpg":
-        with open("background2.jpg", "rb") as file:
+        with open("/usr/src/app/background2.jpg", "rb") as file:
             readfile = file.read()
             client_socket.send((f"HTTP/1.1 200 OK\nContent-Type: image/jpg\nContent-Lenght: {len(readfile)}\n\n").encode())
             client_socket.send(readfile)
