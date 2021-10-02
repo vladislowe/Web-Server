@@ -23,7 +23,7 @@
    
   - name: Install Python Docker module
     command: "apt -y install python3-pip"
-    command: "pip install docker-py"
+    command: "pip3 install docker-py"
    
   - name: Pull Docker image from Dockerhub
     docker_image:
