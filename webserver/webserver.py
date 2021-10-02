@@ -32,12 +32,11 @@ def send_response(req, client_socket):
 
 def logs(request, req, addr):
     with open("/usr/src/app/webserver_logs.txt", "a") as file:
-        file.write(70*'-')
         file.write(request)
         #print("Address: ", addr)
-        file.write("\n")
         str = "User`s requests: " + req
         file.write(str)
+        file.write("\n")
         
 def main():
     #establish TCP connect
