@@ -32,11 +32,17 @@
       name: python:3.8
       source: pull
       
+  - name: Check if container exist
+    command: docker ps -a -q
+    register: containers
+  
   - name: Stop running containers
     shell: docker stop $(docker ps -a -q);
+    when: containers.stdout != ""
   
   - name: Remove stopped containers
     shell: docker rm $(docker ps -a -q);
+    when: containers.stdout != ""
     
   - name: Remove previous image
     docker_image:
