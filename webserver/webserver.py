@@ -30,12 +30,10 @@ def send_response(req, client_socket):
         client_socket.send((f"HTTP/1.1 404 Not found\n\n").encode())
         client_socket.send("<h1>404</h1><p>Not found</p>".encode())
 
-def logs(request, req, addr):
+def logs(request, addr):
     with open("/usr/src/app/webserver_logs.txt", "a") as file:
         file.write(request)
         #print("Address: ", addr)
-        str = "User`s requests: " + req + "\n"
-        file.write(str)
         
 def main():
     #establish TCP connect
@@ -48,7 +46,7 @@ def main():
         request = client_socket.recv(1024)
         request = request.decode('utf-8')
         req = parse_request(request) #file
-        logs(request, req, addr)
+        logs(request, addr)
 
         send_response(req, client_socket)
 
