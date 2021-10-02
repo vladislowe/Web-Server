@@ -32,11 +32,22 @@
       name: python:3.8
       source: pull
     
-  - name: Remove image
+  - name: Remove previous image
     docker_image:
       state: absent
       name: webserver
       tag: v1
+      
+  - name: Stop running containers
+    docker_container:
+      name: "{{ item }}"
+      state: stopped
+    loop: "{{ docker_info.containers | map(attribute='Id') | list }}"
+  
+  - name: Remove stopped containers
+    shell: |
+      docker rm $(docker ps -a -q);
+    when: docker_info.containers != 0
     
   - name: Build Docker image from Dockerfile
     docker_image:
