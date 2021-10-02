@@ -36,7 +36,7 @@
     docker_image:
       name: webserver:v1
       build:
-        path: /home/ubuntu/webserver/webserver/infrastructure/docker/
+        path: /home/ubuntu/webserver/infrastructure/docker/
       source: build
       
   - name: Run Docker container
