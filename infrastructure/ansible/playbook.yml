@@ -34,7 +34,7 @@
     
   - name: Build Docker image from Dockerfile
     docker_image:
-      name: webserver
+      name: webserver:v1
       build:
         path: /home/ubuntu/webserver/webserver/infrastructure/docker/
         source: build
