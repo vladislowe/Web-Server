@@ -36,9 +36,11 @@
     command: docker ps -a -q
     register: containerid
   
-  - name: Copy logs from running container
+  - name: Copy logs from running container to target server
     shell: docker cp $(docker ps -a -q):/usr/src/app/webserver_logs.txt /home/ubuntu/
-    ansible.bultin.fetch:
+    
+  - name: Copy logs from target server to Ansible server
+    fetch:
       src: /home/ubuntu/webserver_logs.txt
       dest: /home/ubuntu/
     when: containerid.stdout != ""
