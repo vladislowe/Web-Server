@@ -36,6 +36,10 @@
     command: docker ps -a -q
     register: containers
   
+  - name: Copy logs from running container
+    shell:  docker cp webserver:/usr/app/src/webserver_logs.txt /home/ubuntu/
+    when: containers.stdout != ""
+  
   - name: Stop running containers
     shell: docker stop $(docker ps -a -q);
     when: containers.stdout != ""
