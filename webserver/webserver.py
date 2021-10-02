@@ -3,7 +3,10 @@ import socket
 #get user's request
 def parse_request(request):
     parsed = request.split(' ')
-    req = parsed[1]
+    try:
+        req = parsed[1]
+    except IndexError:
+        return None
     return req
 
 #send response to the user
