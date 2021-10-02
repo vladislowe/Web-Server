@@ -31,12 +31,6 @@
     docker_image:
       name: python:3.8
       source: pull
-    
-  - name: Remove previous image
-    docker_image:
-      state: absent
-      name: webserver
-      tag: v1
       
   - name: Stop running containers
     docker_container:
@@ -48,6 +42,12 @@
     shell: |
       docker rm $(docker ps -a -q);
     when: docker_info.containers != 0
+    
+  - name: Remove previous image
+    docker_image:
+      state: absent
+      name: webserver
+      tag: v1
     
   - name: Build Docker image from Dockerfile
     docker_image:
