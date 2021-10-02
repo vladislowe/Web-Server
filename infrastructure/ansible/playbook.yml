@@ -21,9 +21,11 @@
       state: started
       enabled: yes
    
-  - name: Install Python Docker module
+  - name: Install Python pip
     command: "apt -y install python3-pip"
-    command: "pip3 install docker-py"
+  
+  - name: Install Python Docker module
+    command: "pip install docker-py"
    
   - name: Pull Docker image from Dockerhub
     docker_image:
