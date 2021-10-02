@@ -33,11 +33,11 @@
       source: pull
     
   - name: Build Docker image from Dockerfile
-    docker_image: >
-      name=webserver:v1
-      path=/home/ubuntu/webserver/webserver/infrastructure/docker/
-      state=present
-      source=local
+    docker_image:
+      name: webserver:v1
+      build:
+        path: /home/ubuntu/webserver/webserver/infrastructure/docker/
+      source: build
       
   - name: Run Docker container
     docker_container:
