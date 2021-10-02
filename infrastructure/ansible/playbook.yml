@@ -15,7 +15,16 @@
   - name: Copy source files to target server
     copy: src={{ source_dir }} dest={{ destin_dir }} mode=0755
     
-  - name: Run web server
-    script: ../../webserver/webserver.py
-    args:
-      executable: python
+  - name: Build Docker image from Dockerfile
+    docker_image:
+      path: /home/ubuntu/webserver/infrastructure/docker/
+      name: webserver
+      
+  - name: Run Docker container
+    docker_container:
+      name: webserver
+      image: webserver
+      state: started
+      ports:
+      - "8888:80"
+      detach: true
