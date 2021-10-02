@@ -34,9 +34,8 @@ def logs(request, req, addr):
     with open("/usr/src/app/webserver_logs.txt", "a") as file:
         file.write(request)
         #print("Address: ", addr)
-        str = "User`s requests: " + req
+        str = "User`s requests: " + req + "\n"
         file.write(str)
-        file.write("\n")
         
 def main():
     #establish TCP connect
