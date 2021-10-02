@@ -32,6 +32,12 @@
       name: python:3.8
       source: pull
     
+  - name: Remove image
+    docker_image:
+      state: absent
+      name: webserver
+      tag: v1
+    
   - name: Build Docker image from Dockerfile
     docker_image:
       name: webserver:v1
