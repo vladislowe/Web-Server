@@ -37,7 +37,7 @@
     register: containerid
   
   - name: Copy logs from running container
-    shell:  docker cp $(docker ps -a -q):/usr/src/app/webserver_logs.txt .
+    shell:  docker cp $(docker ps -a -q):/usr/src/app/webserver/webserver_logs.txt .
     when: containerid.stdout != ""
   
   - name: Stop running containers
