@@ -42,7 +42,7 @@
   - name: Run Docker container
     docker_container:
       name: webserver
-      image: webserver
+      image: webserver:v1
       state: started
       ports:
       - "8888:80"
