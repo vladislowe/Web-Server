@@ -37,9 +37,9 @@
     register: containerid
   
   - name: Copy logs from running container
-    shell: docker cp $(docker ps -a -q):/usr/src/app/webserver_logs.txt .
+    shell: docker cp $(docker ps -a -q):/usr/src/app/webserver_logs.txt /home/ubuntu/
     fetch:
-      src: ./webserver_logs.txt
+      src: /home/ubuntu/webserver_logs.txt
       dest: /home/ubuntu/
     when: containerid.stdout != ""
   
