@@ -34,14 +34,11 @@
       
   - name: Stop running containers
     docker_container:
-      name: "{{ item }}"
+      name: webserver
       state: stopped
-    loop: "{{ docker_info.containers | map(attribute='Id') | list }}"
   
   - name: Remove stopped containers
-    shell: |
-      docker rm $(docker ps -a -q);
-    when: docker_info.containers != 0
+    shell: docker rm $(docker ps -a -q);
     
   - name: Remove previous image
     docker_image:
