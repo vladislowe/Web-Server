@@ -38,11 +38,11 @@
   
   - name: Copy logs from running container
     shell: docker cp $(docker ps -a -q):/usr/src/app/webserver_logs.txt /home/ubuntu/
-    fetch:
+    ansible.bultin.fetch:
       src: /home/ubuntu/webserver_logs.txt
       dest: /home/ubuntu/
     when: containerid.stdout != ""
-
+    
   - name: Stop running containers
     shell: docker stop $(docker ps -a -q);
     when: containerid.stdout != ""
