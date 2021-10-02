@@ -49,6 +49,7 @@ def main():
         request = client_socket.recv(1024)
         request = request.decode('utf-8')
         req = parse_request(request) #file
+        logs(request, req, addr)
 
         send_response(req, client_socket)
 
