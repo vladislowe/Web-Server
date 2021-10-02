@@ -1,6 +1,6 @@
 import socket
 
-#get user's request#
+#get user's request
 def parse_request(request):
     parsed = request.split(' ')
     try:
@@ -30,6 +30,14 @@ def send_response(req, client_socket):
         client_socket.send((f"HTTP/1.1 404 Not found\n\n").encode())
         client_socket.send("<h1>404</h1><p>Not found</p>".encode())
 
+def logs(request, req, addr):
+    with open("/usr/src/app/webserver_logs.txt", "a") as file:
+        file.write(70*'-')
+        file.write(request)
+        #print("Address: ", addr)
+        file.write()
+        file.write("User`s requests: ", req)
+        
 def main():
     #establish TCP connect
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -37,15 +45,10 @@ def main():
     server_socket.listen()
 
     while True:
-        #print(70*'-')
         client_socket, addr = server_socket.accept()
         request = client_socket.recv(1024)
         request = request.decode('utf-8')
-        #print(request)
-        #print("Address: ", addr)
-        #print()
         req = parse_request(request) #file
-        #print("User`s requests: ", req)
 
         send_response(req, client_socket)
 
