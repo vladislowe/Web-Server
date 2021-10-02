@@ -37,6 +37,7 @@
       name=webserver:v1
       path=/home/ubuntu/webserver/webserver/infrastructure/docker/
       state=present
+      source=build
       
   - name: Run Docker container
     docker_container:
