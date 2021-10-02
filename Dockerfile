@@ -6,7 +6,6 @@ COPY ./webserver /usr/src/app/
 #change file permissions
 RUN chmod 777 /usr/src/app/webserver.py
 RUN chmod 777 /usr/src/app/index.html
-RUN chmod 777 /usr/src/app/gitlab.jpeg
 RUN chmod 777 /usr/src/app/github.png
 RUN chmod 777 /usr/src/app/background2.jpg
 
