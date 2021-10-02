@@ -1,6 +1,6 @@
 import socket
 
-#get user's request
+#get user's request#
 def parse_request(request):
     parsed = request.split(' ')
     try:
