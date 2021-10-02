@@ -35,7 +35,7 @@ def logs(request, req, addr):
         file.write(70*'-')
         file.write(request)
         #print("Address: ", addr)
-        file.write()
+        file.write("\n")
         file.write("User`s requests: ", req)
         
 def main():
