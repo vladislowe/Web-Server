@@ -4,10 +4,10 @@ This repo contains a Python Web Server. To run it, execute webserver.py file wit
 
 | command | result  |
 |---|---|
-| [server's IP address]:80 | index.html  |
-| [server's IP address]:80/index.html | index.html  |
-| [server's IP address]:80/github.png | github.png  |
-| [server's IP address]:80/background2.jpg | background2.jpg |
+| [server's IP address]:8888 | index.html  |
+| [server's IP address]:8888/index.html | index.html  |
+| [server's IP address]:8888/github.png | github.png  |
+| [server's IP address]:8888/background2.jpg | background2.jpg |
 | else | 404 error  |
 
 Web server uses 80 port.
