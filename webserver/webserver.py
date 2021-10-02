@@ -36,7 +36,8 @@ def logs(request, req, addr):
         file.write(request)
         #print("Address: ", addr)
         file.write("\n")
-        file.write("User`s requests: ", req)
+        str = "User`s requests: " + req
+        file.write(str)
         
 def main():
     #establish TCP connect
