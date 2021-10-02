@@ -15,11 +15,23 @@
   - name: Copy source files to target server
     copy: src={{ source_dir }} dest={{ destin_dir }} mode=0755
     
+  - name: Start Docker daemon
+    service:
+      name: docker
+      state: started
+      enabled: yes
+   
+  - name: Pull Docker image from Dockerhub
+    docker_image:
+      name: python:3.8
+      source: pull
+    
   - name: Build Docker image from Dockerfile
     docker_image:
-      path: /home/ubuntu/webserver/infrastructure/docker/
       name: webserver
-      source: pull
+      build:
+        path: /home/ubuntu/webserver/infrastructure/docker/
+        source: build
       state: present
       
   - name: Run Docker container
