@@ -1,4 +1,4 @@
-# Web-Server
+# Python Web Server
 
 This repo contains a Python web server and all necessary files to run it in AWS. 
 
