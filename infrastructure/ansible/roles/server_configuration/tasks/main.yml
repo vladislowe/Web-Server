@@ -30,6 +30,7 @@
   
 - name: Copy logs from running container to target server
   shell: docker cp $(docker ps -a -q):/usr/src/app/webserver_logs.txt /home/ubuntu/
+  when: containerid.stdout != ""
    
 - name: Copy logs from target server to Ansible server
   fetch:
