@@ -41,6 +41,7 @@ def main():
     if os.path.exists("/usr/src/app/webserver_logs.txt") == False:
         with open("/usr/src/app/webserver_logs.txt", "a") as file:
             str = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+            str = str + "\n"
             file.write(str)
     
     #establish TCP connect
