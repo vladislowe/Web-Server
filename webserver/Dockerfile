@@ -1,7 +1,7 @@
 FROM python:3.8
 
 #copy source files
-COPY ./webserver /usr/src/app/
+COPY ./ /usr/src/app/
 
 #change file permissions
 RUN chmod 777 /usr/src/app/webserver.py
