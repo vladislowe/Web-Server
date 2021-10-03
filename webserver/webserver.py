@@ -1,4 +1,6 @@
 import socket
+from datetime import datetime
+import os
 
 #get user's request
 def parse_request(request):
@@ -36,6 +38,11 @@ def logs(request, addr):
         #print("Address: ", addr)
         
 def main():
+    if os.path.exists("/usr/src/app/webserver_logs.txt") == False:
+        with open("/usr/src/app/webserver_logs.txt", "a") as file:
+            str = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+            file.write(str)
+    
     #establish TCP connect
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind(('', 80))
