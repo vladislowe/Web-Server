@@ -1,0 +1,39 @@
+pipeline{
+    agent { label 'ubuntu20' }
+    tools {
+        terraform 'terraform'
+    }
+    stages{
+        stage('Git pulling'){
+            steps{
+                git branch: 'main', url: 'https://github.com/vladislowe/Web-Server.git'
+            }
+        }
+        stage('Testing'){
+            steps{
+                sh 'sudo apt -y install python3-pip'
+                sh 'pip3 install -U pytest'
+                dir('./webserver/'){
+                    sh 'python3 -m pytest unittests.py'
+                }
+            }
+        }
+        stage('Creating target server'){
+            steps{
+                sh 'terraform -chdir=infrastructure/terraform init'
+                sh 'terraform -chdir=infrastructure/terraform apply -auto-approve > deleteme.txt'
+                sh 'echo `cat deleteme.txt | tail -1 | grep -o \'".*"\' | sed \'s/"//g\'` > ./infrastructure/server_public_ip'
+            }
+        }
+        stage('Configuring target server'){
+            steps{
+                sh 'echo ubuntu1 ansible_host=`cat infrastructure/server_public_ip` >> infrastructure/ansible/hosts'
+                sh 'sudo apt-add-repository ppa:ansible/ansible'
+                sh 'sudo apt update'
+                sh 'sudo apt -y install ansible'
+                ansiblePlaybook credentialsId: 'pem-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'infrastructure/ansible/hosts', playbook: 'infrastructure/ansible/playbook.yml'
+            }
+        }
+    }
+}
+
