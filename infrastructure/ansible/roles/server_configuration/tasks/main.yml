@@ -35,7 +35,7 @@
   fetch:
     src: /home/ubuntu/webserver_logs.txt
     dest: /home/ubuntu/
-    when: containerid.stdout != ""
+  when: containerid.stdout != ""
     
 - name: Stop running containers
   shell: docker stop $(docker ps -a -q);
