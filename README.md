@@ -6,7 +6,7 @@ This repo contains a Python web server and all necessary files to run it in AWS.
 
 ### Architecture
 
-First, Terraform launches two configured EC2 instances called Jenkins controller and Jenkins agent. Controller runs a pipeline using agent. Pipeline creates target server (if it is not exist) using Terraform, pulls the Github project, tests the web server and configures target server using Ansible. Ansible copies source files and runs the web server in Docker container.
+First, Terraform launches two configured EC2 instances called Jenkins controller and Jenkins agent. As soon as changes were pushed to the repo, controller runs a pipeline using agent. Pipeline creates a target server (if it is not exist) using Terraform, pulls the Github project, tests the web server and configures target server using Ansible. Ansible copies source files and runs the web server in Docker container.
 
 <img src="img/architecture.png" width="800" />
 
