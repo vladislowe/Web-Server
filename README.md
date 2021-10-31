@@ -1,5 +1,7 @@
 # Python Web Server
 
+DevOps Summer program 2021, external course - final project - CI/CD pipeline.
+
 This repo contains a Python web server and all necessary files to run it in AWS. 
 
 ---
