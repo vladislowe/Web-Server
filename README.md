@@ -39,4 +39,4 @@ To run the project:
   - Add **./infrastructure/jenkins/Jenkinsfile** as a pipeline script. 
 - Create webhook in your Github repository's settings. 
 
-Also you need to have a **terraform-jenkins-role** in your AWS account with EC2 administrator access.
+Also you must have a **terraform-jenkins-role** in your AWS account with EC2 administrator access.
